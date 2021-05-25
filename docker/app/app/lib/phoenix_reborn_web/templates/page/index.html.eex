@@ -4,9 +4,8 @@
   </article>
   <article class="phx-hero">
       <h1><%= gettext "Welcome to %{name}!", name: "Phoenix Reborn" %></h1>
-      <p><%= gettext "You have viewed LiveDashboard %{count} times", count: 5 %></p>
       <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-          <%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %>
+          <%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home)  %>
       <% end %>
   </article>
 </section>

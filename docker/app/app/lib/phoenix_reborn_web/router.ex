@@ -32,17 +32,24 @@ defmodule PhoenixRebornWeb.Router do
   # you can use Plug.BasicAuth to set up some basic authentication
   # as long as you are also using SSL (which you should anyway).
 
-  # Enables LiveDashboard for production
+  # Enables LiveDashboard for release
   # if Mix.env() in [:dev, :test] do
   import Phoenix.LiveDashboard.Router
   import Plug.BasicAuth
 
+  # Authentication
   pipeline :admins_only do
     plug :basic_auth, username: "admin", password: "REBORN"
   end
 
+  pipeline :count_dashboard do
+    # if pass authentication increase count and log on console
+    plug PhoenixRebornWeb.Plugs.CountDashboard
+  end
+
   scope "/" do
-    pipe_through [:browser, :admins_only]
+    # pipe_through [:browser, :admins_only]
+    pipe_through [:browser, :admins_only, :count_dashboard]
 
     live_dashboard "/dashboard",
       metrics: PhoenixRebornWeb.Telemetry,
