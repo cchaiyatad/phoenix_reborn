@@ -1,5 +1,4 @@
 defmodule PhoenixRebornWeb.Plugs.CounterPlug do
-  # import Plug.Conn
   use PhoenixRebornWeb.Worker.Counter
   alias PhoenixRebornWeb.Worker.Counter, as: CounterWorker
 
@@ -8,6 +7,7 @@ defmodule PhoenixRebornWeb.Plugs.CounterPlug do
     :ok
   end
 
+  @spec call(Plug.Conn.t(), any) :: Plug.Conn.t()
   def call(conn, _default) do
     # Only log when path is /dashboard
     if conn.request_path == "/dashboard" do

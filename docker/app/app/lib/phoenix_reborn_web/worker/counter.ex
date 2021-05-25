@@ -6,7 +6,7 @@ defmodule PhoenixRebornWeb.Worker.Counter do
     :ok
   end
 
-  @spec start_link(any()) :: {:error, any} | {:ok, pid}
+  @spec start_link(any) :: {:error, any} | {:ok, pid}
   def start_link(_) do
     Agent.start_link(fn -> 0 end, name: __MODULE__)
   end
