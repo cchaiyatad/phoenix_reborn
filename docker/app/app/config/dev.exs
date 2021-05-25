@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :phoenix_reborn, PhoenixReborn.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "password",
   database: "phoenix_reborn_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,

@@ -36,7 +36,10 @@ defmodule PhoenixRebornWeb.Router do
 
     scope "/" do
       pipe_through :browser
-      live_dashboard "/dashboard", metrics: PhoenixRebornWeb.Telemetry
+
+      live_dashboard "/dashboard",
+        metrics: PhoenixRebornWeb.Telemetry,
+        ecto_repos: [PhoenixReborn.Repo]
     end
   end
 end
