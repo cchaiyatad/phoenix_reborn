@@ -14,9 +14,10 @@ defmodule PhoenixReborn.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: PhoenixReborn.PubSub},
       # Start the Endpoint (http/https)
-      PhoenixRebornWeb.Endpoint
+      PhoenixRebornWeb.Endpoint,
       # Start a worker by calling: PhoenixReborn.Worker.start_link(arg)
       # {PhoenixReborn.Worker, arg}
+      PhoenixRebornWeb.Worker.Counter
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

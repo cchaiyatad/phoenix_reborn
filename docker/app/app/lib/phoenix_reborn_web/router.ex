@@ -2,21 +2,21 @@ defmodule PhoenixRebornWeb.Router do
   use PhoenixRebornWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug(:accepts, ["html"])
+    plug(:fetch_session)
+    plug(:fetch_flash)
+    plug(:protect_from_forgery)
+    plug(:put_secure_browser_headers)
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
   scope "/", PhoenixRebornWeb do
-    pipe_through :browser
+    pipe_through(:browser)
 
-    get "/", PageController, :index
+    get("/", PageController, :index)
   end
 
   # Other scopes may use custom stacks.
@@ -39,22 +39,20 @@ defmodule PhoenixRebornWeb.Router do
 
   # Authentication
   pipeline :admins_only do
-    plug :basic_auth, username: "admin", password: "REBORN"
+    plug(:basic_auth, username: "admin", password: "REBORN")
   end
 
   pipeline :count_dashboard do
     # if pass authentication increase count and log on console
-    plug PhoenixRebornWeb.Plugs.CountDashboard
+    plug(PhoenixRebornWeb.Plugs.CounterPlug)
   end
 
   scope "/" do
-    # pipe_through [:browser, :admins_only]
-    pipe_through [:browser, :admins_only, :count_dashboard]
+    pipe_through([:browser, :admins_only, :count_dashboard])
 
-    live_dashboard "/dashboard",
+    live_dashboard("/dashboard",
       metrics: PhoenixRebornWeb.Telemetry,
       ecto_repos: [PhoenixReborn.Repo]
+    )
   end
-
-  # end
 end
