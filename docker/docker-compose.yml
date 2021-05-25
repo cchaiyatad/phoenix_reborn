@@ -9,5 +9,7 @@ services:
   app:
     build: ./app
     container_name: pheonix_reborn_app
+    volumes:
+      - ./app/app:/app
     ports:
       - "4000:4000"
