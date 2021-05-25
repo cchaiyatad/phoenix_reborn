@@ -1,4 +1,5 @@
 defmodule PhoenixRebornWeb.Plugs.CounterPlug do
+  require Logger
   use PhoenixRebornWeb.Worker.Counter
   alias PhoenixRebornWeb.Worker.Counter, as: CounterWorker
 
@@ -13,7 +14,7 @@ defmodule PhoenixRebornWeb.Plugs.CounterPlug do
     if conn.request_path == "/dashboard" do
       # increment/0 should return :ok
       CounterWorker.increment()
-      IO.puts("LiveDashboard was opened #{inspect(CounterWorker.value())} times")
+      Logger.info("LiveDashboard was opened #{inspect(CounterWorker.value())} times")
     end
 
     conn
