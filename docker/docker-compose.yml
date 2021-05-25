@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:13.3
+    container_name: pheonix_reborn_db
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: phoenix_reborn_dev
+  app:
+    build: ./app
+    container_name: pheonix_reborn_app
+    ports:
+      - "4000:4000"
