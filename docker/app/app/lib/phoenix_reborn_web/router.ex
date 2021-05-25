@@ -31,15 +31,23 @@ defmodule PhoenixRebornWeb.Router do
   # If your application does not have an admins-only section yet,
   # you can use Plug.BasicAuth to set up some basic authentication
   # as long as you are also using SSL (which you should anyway).
-  if Mix.env() in [:dev, :test] do
-    import Phoenix.LiveDashboard.Router
 
-    scope "/" do
-      pipe_through :browser
+  # Enables LiveDashboard for production
+  # if Mix.env() in [:dev, :test] do
+  import Phoenix.LiveDashboard.Router
+  import Plug.BasicAuth
 
-      live_dashboard "/dashboard",
-        metrics: PhoenixRebornWeb.Telemetry,
-        ecto_repos: [PhoenixReborn.Repo]
-    end
+  pipeline :admins_only do
+    plug :basic_auth, username: "admin", password: "REBORN"
   end
+
+  scope "/" do
+    pipe_through [:browser, :admins_only]
+
+    live_dashboard "/dashboard",
+      metrics: PhoenixRebornWeb.Telemetry,
+      ecto_repos: [PhoenixReborn.Repo]
+  end
+
+  # end
 end
