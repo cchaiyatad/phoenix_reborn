@@ -11,8 +11,8 @@ database="phoenix_reborn_dev"
 hostname="db:5432"
 
 # secret key from mix phx.gen.secret 
-secret_key="Q7L8D8/bmWl81fYNw93guQAJZgOyDbB4nBX5QcHEh4nTmRmx1faHJ8Ob5oS6grPF" # For test
 # secret_key=""
+secret_key="Q7L8D8/bmWl81fYNw93guQAJZgOyDbB4nBX5QcHEh4nTmRmx1faHJ8Ob5oS6grPF" # For test
 
 
 # User should execute this script in same directory

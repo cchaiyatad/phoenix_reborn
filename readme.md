@@ -14,6 +14,12 @@ This project is a part of Phoenix web application challenge
 
 ## How to run
 
+``` text
+For live dashboard authentication
+username: admin
+password: REBORN
+```
+
 ### For develop
 
 #### With docker compose

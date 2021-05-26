@@ -1,12 +1,5 @@
 FROM elixir:1.9.0-alpine AS build
 
-# # Define Variables
-# ARG username="postgres"
-# ARG password="password"
-# ARG database="phoenix_reborn_dev"
-# ARG hostname="db:5432"
-# ARG secret_key="Q7L8D8/bmWl81fYNw93guQAJZgOyDbB4nBX5QcHEh4nTmRmx1faHJ8Ob5oS6grPF"
-
 # install build dependencies
 RUN apk add --no-cache build-base npm git python
 
