@@ -1,6 +1,6 @@
 # Phoenix Reborn
 
-This project is a part of Phoenix web application challenge
+This project is a part of [Phoenix web application challenge](https://github.com/opn-ooo/challenges/tree/master/challenge-phoenix)
 
 ## Goal
 
