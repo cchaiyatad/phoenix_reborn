@@ -46,10 +46,13 @@ docker run --name phoenix-postgres \
 # 2. Change directory
 cd <project_path>/docker/app/app
 
-# 3. Start server
+# 3. Change db hostname config
+# in <project_path>/docker/app/app/config/dev.exs change hostname from 'db' to 'localhost'
+
+# 4. Start server
 mix phx.server
 
-# 4. Now we can enter the website from localhost:4000
+# 5. Now we can enter the website from localhost:4000
 ```
 
 ### For release
